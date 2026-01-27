@@ -1,0 +1,10 @@
+## 📌 Full stack open course
+
+decided to try out https://fullstackopen.com/ :)
+ill just put all the exercises here, thats it
+
+### 🛠️ technical info
+- **language:** javascript
+- **framework:** express, react
+- **tools:** Git, GitHub, VS Code
+

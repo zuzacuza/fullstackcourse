@@ -1,5 +1,11 @@
 import { useState } from 'react'
 
+const Button = ({onClick, text}) => (
+    <button onClick={onClick}>
+      {text}
+    </button>
+)
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -16,7 +22,9 @@ const App = () => {
 
   return (
     <div>
-      {anecdotes[selected]}
+      {anecdotes[selected]} 
+    <br></br> <br></br>
+      <Button text='next anecdote'/>
     </div>
   )
 }

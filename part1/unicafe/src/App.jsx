@@ -18,9 +18,26 @@ const SubHeader = ({text}) => (
   </div>
 )
 
-const Stats = ({text, count}) => (
+const Statistics = ({good, neutral, bad, total, sum, positive}) => {
+  if (total === 0){
+    return <div>No feedback given</div>
+  } else {
+    return(
+      <div>
+      <StatsLine text="good" value={good} />
+      <StatsLine text="neutral" value={neutral} />
+      <StatsLine text="bad" value={bad} />
+      <StatsLine text="total" value={total} />
+      <StatsLine text="average" value={sum / total} />
+      <StatsLine text="positive" value={(positive / total) * 100 + "%"} />
+      </div>
+    )
+  }
+}
+
+const StatsLine = ({text, value}) => (
   <div>
-    {text} {count}
+    {text} {value}
   </div>
 )
   
@@ -55,13 +72,14 @@ const App = () => {
       <Button onClick={handleGood} text='good'/>
       <Button onClick={handleNeutral} text='neutral'/>
       <Button onClick={handleBad} text='bad'/>
-      <SubHeader text='statistics'/>
-      <Stats text ='good' count={good}/>
-      <Stats text ='neutral' count={neutral}/>
-      <Stats text ='bad' count={bad}/>
-      <Stats text ='total' count={total}/>
-      <Stats text='average' count={total === 0 ? 0: sum/total}/>
-      <Stats text ='positive' count={(total === 0 ? 0 : (positive / total) * 100) + '%'}/>
+      <SubHeader text='StatsLine'/>
+      <Statistics
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        total={total}
+        sum={sum}
+        positive={positive}/>
     </div>
   )
 }

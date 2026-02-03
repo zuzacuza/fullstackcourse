@@ -23,22 +23,25 @@ const Statistics = ({good, neutral, bad, total, sum, positive}) => {
     return <div>No feedback given</div>
   } else {
     return(
-      <div>
+      <table>
+      <tbody>
       <StatsLine text="good" value={good} />
       <StatsLine text="neutral" value={neutral} />
       <StatsLine text="bad" value={bad} />
       <StatsLine text="total" value={total} />
       <StatsLine text="average" value={sum / total} />
       <StatsLine text="positive" value={(positive / total) * 100 + "%"} />
-      </div>
+      </tbody>
+     </table>
     )
   }
 }
 
 const StatsLine = ({text, value}) => (
-  <div>
-    {text} {value}
-  </div>
+  <tr>
+    <td>{text}</td> 
+    <td>{value}</td>
+  </tr>
 )
   
 const App = () => {

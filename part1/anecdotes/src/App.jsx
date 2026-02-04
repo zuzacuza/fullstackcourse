@@ -11,6 +11,13 @@ const Votes = ({count}) => (
     has {count} votes
   </div>
 )
+const BestAnecdote = ({anecdote, votes}) => (
+  <div>
+    <h1>Anecdote with most votes</h1>
+    {anecdote}
+    <div>has {votes} votes</div>
+  </div>
+)
 
 const App = () => {
   const anecdotes = [
@@ -23,6 +30,7 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
   ]
+  
   
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
@@ -37,15 +45,18 @@ const App = () => {
     copy[selected] += 1
     setVotes(copy)
   }
- 
 
+  const bestIndex = votes.indexOf(Math.max(...votes))
+ 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
       <Votes count={votes[selected]}/>
       <br></br> <br></br>
       <Button onClick={handleClick} text='next anecdote'/>
       <Button onClick={handleVote} text='vote'/>
+      <BestAnecdote anecdote={anecdotes[bestIndex]} votes={votes[bestIndex]}/>
       
     </div>
   )
